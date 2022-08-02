@@ -15,7 +15,7 @@ if (packageJson.yalcWatch) {
 
   if (
     yalcWatch.watchFolder === undefined ||
-    yalcWatch.buildWatchCommand === undefined ||
+    // yalcWatch.buildWatchCommand === undefined ||
     yalcWatch.extensions === undefined
   )
     throw new Error('Invalid yalc watch config: "' + JSON.stringify(yalcWatch) + '"');
@@ -40,7 +40,9 @@ if (packageJson.yalcWatch) {
       console.log(chalk.blueBright("Trying to push new yalc package..."));
     });
 
-  concurrently([yalcWatch.buildWatchCommand]);
+  if (yalcWatch.buildWatchCommand) {
+    concurrently([yalcWatch.buildWatchCommand]);
+  }
 } else {
   console.log(
     chalk.redBright("Error: yalc-watch could not find a yalcWatch section in your package.json file, exiting")
