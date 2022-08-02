@@ -1,4 +1,9 @@
-# Yalc-watch
+# Yalc-watch improved
+
+Based on [johot's yalc-watch](https://github.com/johot/yalc-watch), but with a few improvements:
+* Package is now published with `LF` line endings instead of `CRLF` to improve compatibility with Mac + Linux when using yarn.
+* Cleaned up + updated dependencies => less vulnerabilities.
+* `buildWatchCommand` property in config is now optional, in case you want to directly publish your source without processing it with something like Babel or TSC.
 
 ## Why
 
@@ -21,7 +26,13 @@ The `yalc push` command will _automaticaly_ update all projects where you have p
 In your library / package install `yalc-watch` as a dev dependency:
 
 ```
-npm i yalc-watch --save-dev
+npm i yalc-watch-improved --save-dev
+```
+
+or
+
+```
+yarn add -D yalc-watch-improved
 ```
 
 Add the following confic JSON to your `package.json` and tweak to your liking:
