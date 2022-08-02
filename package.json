@@ -2,12 +2,12 @@
   "name": "yalc-watch-improved",
   "version": "0.0.6",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.mjs",
   "bin": {
-    "yalc-watch": "dist/index.js"
+    "yalc-watch": "src/index.mjs"
   },
   "files": [
-    "dist"
+    "src"
   ],
   "scripts": {
     "dev": "ts-node src/index",

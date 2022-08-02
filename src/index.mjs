@@ -6,18 +6,12 @@ import chalk from "chalk";
 import fs from "fs";
 import path from "path";
 
-interface YalcWatchConfig {
-  watchFolder: string;
-  buildWatchCommand: string;
-  extensions: string;
-}
-
 // Get package.json contents
 const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"));
 
 // Get the yalcWatch section (if it exists)
 if (packageJson.yalcWatch) {
-  const yalcWatch: YalcWatchConfig = packageJson.yalcWatch;
+  const yalcWatch = packageJson.yalcWatch;
 
   if (
     yalcWatch.watchFolder === undefined ||
@@ -41,7 +35,7 @@ if (packageJson.yalcWatch) {
       //console.log("App has quit");
       process.exit();
     })
-    .on("restart", function(files: any) {
+    .on("restart", function(files) {
       console.log(chalk.blueBright("Found changes in files:", chalk.magentaBright(files)));
       console.log(chalk.blueBright("Trying to push new yalc package..."));
     });
