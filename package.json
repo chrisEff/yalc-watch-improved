@@ -20,17 +20,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/concurrently": "^4.1.0",
-    "@types/node": "^13.1.5",
-    "@types/nodemon": "^1.19.0",
-    "chalk": "^3.0.0",
-    "commander": "^4.1.0",
-    "concurrently": "^5.0.2",
-    "nodemon": "^2.0.2",
-    "sync-directory": "^2.1.0"
+    "chalk": "^5.0.1",
+    "concurrently": "^7.3.0",
+    "nodemon": "^2.0.19"
   },
   "devDependencies": {
-    "typescript": "^3.7.4",
-    "yalc": "^1.0.0-pre.34"
+    "@types/concurrently": "^6.4.0",
+    "@types/nodemon": "^1.19.2",
+    "yalc": "^1.0.0-pre.53"
   }
 }
