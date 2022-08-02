@@ -10,11 +10,8 @@
     "src"
   ],
   "scripts": {
-    "dev": "ts-node src/index",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "lb": "npm run build && yalc publish",
-    "bp": "tsc && npm publish"
+    "prepare": "husky install",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -25,8 +22,17 @@
     "nodemon": "^2.0.19"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@commitlint/cz-commitlint": "^17.0.3",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
     "@types/concurrently": "^6.4.0",
     "@types/nodemon": "^1.19.2",
+    "commitizen": "^4.2.5",
+    "gh-pages": "^4.0.0",
+    "husky": "^8.0.1",
+    "semantic-release": "^19.0.3",
     "yalc": "^1.0.0-pre.53"
   }
 }
