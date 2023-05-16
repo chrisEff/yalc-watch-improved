@@ -15,7 +15,6 @@ if (packageJson.yalcWatch) {
 
   if (
     yalcWatch.watchFolder === undefined ||
-    // yalcWatch.buildWatchCommand === undefined ||
     yalcWatch.extensions === undefined
   )
     throw new Error('Invalid yalc watch config: "' + JSON.stringify(yalcWatch) + '"');
@@ -24,7 +23,6 @@ if (packageJson.yalcWatch) {
     watch: [yalcWatch.watchFolder],
     ext: yalcWatch.extensions,
     exec: "yalc push --changed"
-    //delay: 1000
   });
 
   nodemon
@@ -32,7 +30,6 @@ if (packageJson.yalcWatch) {
       console.log(`${chalk.magentaBright("yalc-watch has started")}`);
     })
     .on("quit", function() {
-      //console.log("App has quit");
       process.exit();
     })
     .on("restart", function(files) {
