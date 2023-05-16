@@ -1,3 +1,15 @@
+## 1.0.1 (2023-05-16)
+
+
+### Documentation
+
+* add npm badge to Readme.md 25f5004
+
+
+### Build System and Dependencies
+
+* update dependencies 73ff476
+
 ## 1.0.0 (2022-08-02)
 
 
