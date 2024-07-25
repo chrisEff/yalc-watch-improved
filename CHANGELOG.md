@@ -1,3 +1,19 @@
+## 2.0.0 (2024-07-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* `buildWatchCommand` defaults to `yarn watch` now instead of doing nothing
+
+### Features
+
+* add defaults for all config settings b077bcc
+
+
+### Build System and Dependencies
+
+* bump dependencies to latest minor update 011dd16
+
 ## 1.0.3 (2023-10-09)
 
 
