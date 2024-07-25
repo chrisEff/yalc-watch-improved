@@ -5,7 +5,13 @@
 Based on [johot's yalc-watch](https://github.com/johot/yalc-watch), but with a few improvements:
 * Package is now published with `LF` line endings instead of `CRLF` to improve compatibility with Mac + Linux when using yarn.
 * Cleaned up + updated dependencies => less vulnerabilities.
-* `buildWatchCommand` property in config is now optional, in case you want to directly publish your source without processing it with something like Babel or TSC.
+* all config settings are now optional and have default values
+
+| setting             | default              |
+|---------------------|----------------------|
+| `buildWatchCommand` | `yarn watch`         |
+| `extensions`        | `js,jsx,ts,tsx,json` |
+| `watchFolder`       | `build`              |
 
 ## Why
 

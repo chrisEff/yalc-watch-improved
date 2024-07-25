@@ -9,36 +9,34 @@ import path from 'path'
 const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8'))
 
 // Get the yalcWatch section (if it exists)
-if (packageJson.yalcWatch) {
-	const yalcWatch = packageJson.yalcWatch
 
-	if (yalcWatch.watchFolder === undefined || yalcWatch.extensions === undefined) {
-		throw new Error('Invalid yalc watch config: "' + JSON.stringify(yalcWatch) + '"')
-	}
+const config = packageJson.yalcWatch || {}
 
-	nodemon({
-		watch: [yalcWatch.watchFolder],
-		ext: yalcWatch.extensions,
-		exec: 'yalc push --changed',
+// prettier-ignore
+const {
+	buildWatchCommand = 'yarn watch',
+	extensions = 'js,jsx,ts,tsx,json',
+	watchFolder = 'build',
+} = config
+
+nodemon({
+	watch: [watchFolder],
+	ext: extensions,
+	exec: 'yalc push --changed',
+})
+
+nodemon
+	.on('start', function () {
+		console.log(`${chalk.magentaBright('yalc-watch has started')}`)
+	})
+	.on('quit', function () {
+		process.exit()
+	})
+	.on('restart', function (files) {
+		console.log(chalk.blueBright('Found changes in files:', chalk.magentaBright(files)))
+		console.log(chalk.blueBright('Trying to push new yalc package...'))
 	})
 
-	nodemon
-		.on('start', function () {
-			console.log(`${chalk.magentaBright('yalc-watch has started')}`)
-		})
-		.on('quit', function () {
-			process.exit()
-		})
-		.on('restart', function (files) {
-			console.log(chalk.blueBright('Found changes in files:', chalk.magentaBright(files)))
-			console.log(chalk.blueBright('Trying to push new yalc package...'))
-		})
-
-	if (yalcWatch.buildWatchCommand) {
-		concurrently([yalcWatch.buildWatchCommand])
-	}
-} else {
-	console.log(
-		chalk.redBright('Error: yalc-watch could not find a yalcWatch section in your package.json file, exiting')
-	)
+if (buildWatchCommand) {
+	concurrently([buildWatchCommand])
 }
